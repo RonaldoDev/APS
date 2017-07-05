@@ -1,0 +1,130 @@
+JFDML JFormDesigner: "6.0.1.0.112" Java: "1.8.0_112-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {par l {comp pnlMesa::l:p::p, seq l {space :p:26:p, par l:::p {comp lblNomeAdversario::::439:x, comp lblMensagem::::439:x}}}, space ::595:x, comp pnlAcao:::p::p}, seq l {space :::p, comp panel3:::p:1405:p, space ::42:x}}"
+			"$verticalGroup": "par l {seq {par l {seq l {space :p:15:p, comp lblNomeAdversario:::p::p, space :::p, comp lblMensagem:::p::p, space :p:20:p, comp pnlMesa:::p::p}, seq l {space :::p, comp pnlAcao:::p::p}}, space :::p, comp panel3:::p::p, space ::7:x}}"
+		} ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq {par t {seq {space :::x, comp comboBox3:::p:263:p}, seq {space :p:43:p, par l {comp comboBox2::l:::x, seq {par l {seq l {comp lblNumAjudas:::p:45:p, space :::p, comp btnAjudas:::p:202:p}, comp comboBox4:::p:263:p}, space :0:0:x}, seq t {space :0:0:x, par l {comp comboBox1::t:p:263:p, comp btnDescarte::t:p:263:p}}, comp btnBater::t:::x}}}, space ::48:x}, seq l {space :p:43:p, par l {comp comboBox6:::p:263:p, comp comboBox5:::p:263:p}, space ::48:x}}"
+				"$verticalGroup": "par l {seq l {comp btnDescarte:::p::p, space :::p, comp btnBater:::p::p, space :::p, par l {comp lblNumAjudas:::::x, seq {comp btnAjudas:::p::p, space :0:24:x}}, space :::p, comp comboBox4:::p:37:p, space :::p, comp comboBox2:::p:37:p, space :::p, comp comboBox1:::p:37:p, space :::p, comp comboBox3:::p:37:p, space :::p, comp comboBox5:::p:37:p, space :::p, comp comboBox6:::p:37:p, space :p::p}}"
+			} ) {
+				name: "pnlAcao"
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnDescarte"
+					"text": "Descartar e Passar"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnDescarteActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnBater"
+					"text": "Descartar e Bater"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnBaterActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "comboBox4"
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "comboBox2"
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "comboBox1"
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "comboBox3"
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "comboBox5"
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "comboBox6"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnAjudas"
+					"text": "Ajuda"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnAjudasActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "lblNumAjudas"
+					"text": "3"
+					"iconTextGap": 10
+					"horizontalTextPosition": 0
+					"horizontalAlignment": 0
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 16, true )
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq t {space :::x, comp pnlMao:::p::p, space :::p}}"
+				"$verticalGroup": "par l {seq l {space :::p, comp pnlMao:::p::p, space :::x}}"
+			} ) {
+				name: "panel3"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq {space :::p, comp carta1:::p:161:p, space u:::p, comp carta2:::p:161:p, space u:::p, comp carta3:::p:161:p, space u:::p, comp carta4:::p:161:p, space u:::p, comp carta5:::p:161:p, space u:::p, comp carta6:::p:161:p, space :::p, comp carta7:::p:161:p, space u:::p, comp carta8:::p:161:p, space ::251:x}}"
+					"$verticalGroup": "par l {seq l {space :::p, par l {comp carta8::l:p:245:p, par b:l {comp carta2::b:p:245:p, comp carta3::b:p:245:p, comp carta4::b:p:245:p, comp carta5::b:p:245:p, comp carta6::b:p:245:p, comp carta7::b:p:245:p, comp carta1::b:p:245:p}}, space :::x}}"
+				} ) {
+					name: "pnlMao"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "carta1"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "carta5"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "carta6"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "carta4"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "carta2"
+						"verticalTextPosition": 3
+						"cursor": new java.awt.Cursor( 12 )
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "carta3"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "carta7"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "carta8"
+					} )
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq {par l {seq {space :p:22:p, comp cartaMonte:::p:161:p, space :p:43:p, comp cartaDescarte:::p:161:p}, seq l {space :p:133:p, comp btnComprar:::p:151:p}}, space ::117:x}}"
+				"$verticalGroup": "par l {seq l {space :::p, par b {comp cartaMonte::b:p:245:p, comp cartaDescarte::b:p:245:p}, space u:::p, comp btnComprar:::p::p, space ::12:x}}"
+			} ) {
+				name: "pnlMesa"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "cartaDescarte"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "cartaMonte"
+					"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\ronal\\Documents\\UFSC\\Java\\APS\\src\\com\\devbattle\\utils\\img\\carta_virada.png" )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnComprar"
+					"text": "Comprar Carta"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnComprarActionPerformed", true ) )
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "lblNomeAdversario"
+				"text": "Nome Adversário :"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "lblMensagem"
+				"text": "text"
+			} )
+			menuBar: new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
+				name: "menuBarPartida"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 20, 0 )
+			"size": new java.awt.Dimension( 1455, 740 )
+		} )
+	}
+}

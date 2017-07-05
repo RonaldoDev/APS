@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="ngnrtFramework">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/netgames/ngnrtFramework.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/netgames/ngnrtFramework.jar!/" />
+    </SOURCES>
+  </library>
+</component>
