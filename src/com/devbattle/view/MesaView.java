@@ -132,10 +132,11 @@ public class MesaView extends JFrame {
 
     private void btnAjudasActionPerformed(ActionEvent e) {
         JCarta _cartaSelecionada = validarCartaSeleciona("pnlMao");
-        if(AtorJogador.verificarSubtrairAjudaJogador())
-            _cartaSelecionada.mostrarDica();
-        else
-            mostrarMensagem("Sem Dicas");
+        if(_cartaSelecionada != null)
+            if(AtorJogador.verificarSubtrairAjudaJogador())
+                _cartaSelecionada.mostrarDica();
+            else
+                mostrarMensagem("Sem Dicas");
 
     }
     private void initComponents() {
@@ -451,19 +452,14 @@ public class MesaView extends JFrame {
         }
         else
         {
-            mostrarMensagem(EstadoPartida.toString());
+            mostrarMensagem("Nao deu Bao");
         }
     }
 
     private void clickConexao(ActionEvent e) {
-        EstadoPartida = Enumeradores.EstadoPartida.TelaInicial;
-        if(EstadoPartida == Enumeradores.EstadoPartida.TelaInicial) {
-            String[] resultado = JOptionPaneMultiInput.main(null);
-            mostrarMensagemBarra(AtorJogador.conectar(resultado[0], resultado[1]).toString());
-        }
-        else{
-            mostrarMensagem(Enumeradores.EstadoPartida.AguardandoEscolhaAdversario.toString());
-        }
+            String[] _resultado = JOptionPaneMultiInput.main(null);
+            EstadoPartida = Enumeradores.EstadoPartida.TelaInicial;
+            mostrarMensagemBarra(AtorJogador.conectar(_resultado[0], _resultado[1]).toString());
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

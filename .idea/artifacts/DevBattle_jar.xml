@@ -8,6 +8,7 @@
       <element id="module-output" name="APS" />
       <element id="extracted-dir" path="$PROJECT_DIR$/netgames/ngnrtFramework.jar" path-in-jar="/" />
       <element id="library" level="project" name="ngnrtFramework" />
+      <element id="file-copy" path="$PROJECT_DIR$/jogoMultiPlayer.properties" />
     </root>
   </artifact>
 </component>

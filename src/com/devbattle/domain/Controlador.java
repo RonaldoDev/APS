@@ -216,6 +216,7 @@ public class Controlador {
 	}
 
 	private boolean validarLinguagensCarta(List<Carta> pMaoJogador, List<Linguagem> pListaLinguagemCarta) {
+		boolean _resultado = true;
 		for (Enumeradores.TipoLinguagem tpLinguagem : Arrays.stream(Enumeradores.TipoLinguagem.values()).filter(f -> f != Enumeradores.TipoLinguagem.EngSoftware && f != Enumeradores.TipoLinguagem.LinguagemMarcacao).collect(Collectors.toList())) {
 			List<Carta> _listaVerificacaoTipo = pMaoJogador.stream().filter(f -> f.getTipoLinguagem() == tpLinguagem.toString()).collect(Collectors.toList());
 			pListaLinguagemCarta.clear();
@@ -422,6 +423,7 @@ public class Controlador {
             Mesa.getJogadores().stream().filter(f -> f.isJogadorDaVez()).findFirst().get().getMao().remove(_descarte);
             verificarBatida(pValoresComboBox);
             AtorJogador.atualizaViewMesa(Mesa, Jogador);
+			Mesa.setDescarteDaRodada(null);
         }
         catch (Exception e)
         {
