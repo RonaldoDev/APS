@@ -133,86 +133,88 @@ public class Controlador {
 		}
 		montaObjetoJogada();
 	}
-	private boolean validarValoresSelecionadosComboCarta(List<String> pListaSelecionados, List<Carta> _maoJogador, List<Linguagem> _listaLinguagensCartas) {
-		_maoJogador.forEach(f -> {
-			_listaLinguagensCartas.addAll(f.getLinguagens());
+	private boolean validarValoresSelecionadosComboCarta(List<String> pListaSelecionados, List<Carta> pMaoJogador, List<Linguagem> plistaLinguagensCartas) {
+		boolean _resultado = true;
+		int _contador = 0;
+		pMaoJogador.forEach(f -> {
+			plistaLinguagensCartas.addAll(f.getLinguagens());
 		});
-		List<Linguagem> _listaLinguagesDiferentes = _listaLinguagensCartas.stream().filter(distinctByKey(f -> f.getIdLinguagem())).collect(Collectors.toList());
+		List<Linguagem> _listaLinguagesDiferentes = plistaLinguagensCartas.stream().filter(distinctByKey(f -> f.getIdLinguagem())).collect(Collectors.toList());
 		for(String str : pListaSelecionados)
 		{
 			if (_listaLinguagesDiferentes.stream().filter(fi -> fi.getNomeLinguagem().equals(str)).count() == 0) {
 				setMensagem("Linguagem escolhida nao pertence as suas cartas.");
-				return false;
+				_resultado =  false;
 			}
 		};
-		int contador = 0;
+
 		for (String str : pListaSelecionados)
 		{
-			for(Carta crt : _maoJogador)
+			for(Carta crt : pMaoJogador)
 			{
-				contador += crt.getLinguagens().stream().filter(f -> f.getNomeLinguagem().equals(str)).count();
+				_contador += crt.getLinguagens().stream().filter(f -> f.getNomeLinguagem().equals(str)).count();
 			}
 		}
-		if(contador < 7)
+		if(_contador < 7)
 		{
 			setMensagem("cartas diferentes combo");
-			return false;
+			_resultado =  false;
 		}
-		if(_maoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "CSS").count() > 1 &&
-				_maoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "HTML").count() == 0)
+		if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "CSS").count() > 1 &&
+				pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "HTML").count() == 0)
 		{
 			setMensagem("Você não pode bater com CSS sem uma carta HTML");
-			return false;
+			_resultado =  false;
 		}
-		else if(_maoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "HTML").count() > 0)
+		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "HTML").count() > 0)
 		{
 			setMensagem("Você não pode bater com mais de uma carta HTML");
-			return false;
+			_resultado =  false;
 		}
-		else if(_maoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "XML").count() > 0)
+		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "XML").count() > 0)
 		{
 			setMensagem("Você não pode bater com mais de uma carta XML");
-			return false;
+			_resultado =  false;
 		}
-		else if(_maoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "Javascript").count() > 0)
+		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "Javascript").count() > 0)
 		{
 			setMensagem("Você não pode bater com mais de uma carta Javascript");
-			return false;
+			_resultado =  false;
 		}
-		else if(_maoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "Modelo Cascata").count() +
-				 	_maoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "Modelo Incremental").count()  > 1)
+		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "Modelo Cascata").count() +
+				 	pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "Modelo Incremental").count()  > 1)
 		{
 			setMensagem("Você não pode bater com dois Modelos de Projeto");
-			return false;
+			_resultado =  false;
 		}
 
-		else if(_maoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "UML").count() > 0)
+		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "UML").count() > 0)
 		{
 			setMensagem("Você não pode bater com mais de uma carta UML");
-			return false;
+			_resultado =  false;
 		}
 
-		else if(_maoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "GraphDB").count()  +
-					_maoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "MongoDB").count() +
-						_maoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "Modelo Relacional").count() > 1)
+		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "GraphDB").count()  +
+					pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "MongoDB").count() +
+						pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "Modelo Relacional").count() > 1)
 		{
 			setMensagem("Você só pode escolher um tipo de Banco de Dados");
-			return false;
+			_resultado =  false;
 		}
-		else if(_maoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "GraphDB").count()  +
-					_maoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "MongoDB").count() +
-						_maoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "SGBD/SQL").count() > 1)
+		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "GraphDB").count()  +
+					pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "MongoDB").count() +
+						pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "SGBD/SQL").count() > 1)
 		{
 			setMensagem("Você só pode escolher um tipo de Banco de Dados");
-			return false;
+			_resultado =  false;
 		}
-		else if(_maoJogador.stream().filter(f -> f.getTexto().equals("PL")).count()  +
-				_maoJogador.stream().filter(f -> f.getTexto().equals("PgAdmin")).count() >= 2)
+		else if(pMaoJogador.stream().filter(f -> f.getTexto().equals("PL")).count()  +
+				pMaoJogador.stream().filter(f -> f.getTexto().equals("PgAdmin")).count() >= 2)
 		{
 			setMensagem("Você só pode escolher um tipo de SGBD");
-			return false;
+			_resultado =  false;
 		}
-		return true;
+		return _resultado;
 	}
 
 	private boolean validarLinguagensCarta(List<Carta> pMaoJogador, List<Linguagem> pListaLinguagemCarta) {
@@ -229,24 +231,25 @@ public class Controlador {
 			if(_groupLinguagens.size() != 0 && _listaVerificacaoTipo.size() != 0)
 				if (_groupLinguagens.entrySet().stream().filter(f -> f.getValue() >= _listaVerificacaoTipo.size()).findFirst().orElse(null) == null) {
 					setMensagem("Errouu, suas linguagens das cartas não coincidem");
-					return false;
+					_resultado =  false;
 				}
 		}
-		return true;
+		return _resultado;
 	}
 
 	private boolean validarTipoLinguagem(List<Carta> pMaoJogador) {
+		boolean _resultado = true;
 		Map<String, Long> _tiposLinguagem = pMaoJogador.stream().collect(groupingBy(g -> g.getTipoLinguagem(), Collectors.counting()));
 		//region Tipos de linguagem não permitidos bater
 		if (_tiposLinguagem.entrySet().stream().filter(f -> f.getKey() == Enumeradores.TipoLinguagem.Compilada.toString()).count() > 0 &&
 				_tiposLinguagem.entrySet().stream().filter(f -> f.getKey() == Enumeradores.TipoLinguagem.Interpretada.toString()).count() > 0) {
 			setMensagem("Errrrrrrrrrrrrrrrou, você não pode bater com linguagem Compilada e Interpretada.");
-			return false;
+			_resultado =  false;
 		}
 		else if (_tiposLinguagem.entrySet().stream().filter(f -> f.getKey() == Enumeradores.TipoLinguagem.Interpretada.toString()).count() > 0 &&
 				_tiposLinguagem.entrySet().stream().filter(f -> f.getKey() == Enumeradores.TipoLinguagem.LinguagemMarcacao.toString()).count() == 0) {
 			setMensagem("Errrrrrrrrrrrrrrrou, você não pode bater com linguagem Interpretada sem uma Linguagem de Marcação.");
-			return false;
+			_resultado =  false;
 		}
 		//endregion
 
@@ -254,47 +257,38 @@ public class Controlador {
 		else if (_tiposLinguagem.entrySet().stream().filter(f -> f.getKey() == Enumeradores.TipoLinguagem.BancoDados.toString()).count() +
 				_tiposLinguagem.entrySet().stream().filter(f -> f.getKey() == Enumeradores.TipoLinguagem.LinguagemMarcacao.toString()).count() == 7) {
 			setMensagem("Errrrrrrrrrrrrrrrou, você não pode bater somente com Banco de Dados e Linguagem de Marcação.");
-			return false;
+			_resultado =  false;
 		}else if (_tiposLinguagem.entrySet().stream().filter(f -> f.getKey() == Enumeradores.TipoLinguagem.BancoDados.toString()).count() +
 				_tiposLinguagem.entrySet().stream().filter(f -> f.getKey() == Enumeradores.TipoLinguagem.LinguagemMarcacao.toString()).count() +
 				_tiposLinguagem.entrySet().stream().filter(f -> f.getKey() == Enumeradores.TipoLinguagem.EngSoftware.toString()).count() == 7) {
 			setMensagem("Errrrrrrrrrrrrrrrou, você não pode bater somente com Banco de Dados e Linguagem de Marcação.");
-			return false;
+			_resultado =  false;
 		}
 		else if (_tiposLinguagem.entrySet().stream().filter(f -> f.getKey() == Enumeradores.TipoLinguagem.EngSoftware.toString()).count() +
 				_tiposLinguagem.entrySet().stream().filter(f -> f.getKey() == Enumeradores.TipoLinguagem.BancoDados.toString()).count() == 7) {
 			setMensagem("Errrrrrrrrrrrrrrrou, você não pode bater somente com Banco de Dados e Eng. Software.");
-			return false;
+			_resultado =  false;
 		} else if (_tiposLinguagem.entrySet().stream().filter(f -> f.getKey() == Enumeradores.TipoLinguagem.EngSoftware.toString()).count() +
 				_tiposLinguagem.entrySet().stream().filter(f -> f.getKey() == Enumeradores.TipoLinguagem.BancoDados.toString()).count() == 7) {
 			setMensagem("Errrrrrrrrrrrrrrrou, você não pode bater somente com Banco de Dados e Eng. Software.");
-			return false;
+			_resultado =  false;
 		}
 		//endregion
 
 		//region Somente uma linguagem
-		else if (_tiposLinguagem.entrySet().stream().filter(f -> f.getKey() == Enumeradores.TipoLinguagem.BancoDados.toString()).count() >  1)
-		{
-			setMensagem("Errrrrrrrrrrrrrrrou, você não pode bater somente com Banco de Dados.");
-			return false;
-		} else if (_tiposLinguagem.entrySet().stream().filter(f -> f.getKey() == Enumeradores.TipoLinguagem.EngSoftware.toString()).count() > 1)
-
-		{
-			setMensagem("Errrrrrrrrrrrrrrrou, você não pode bater somente com Engenharia de software.");
-			return false;
-		}
 		else if (_tiposLinguagem.entrySet().stream().filter(f -> f.getKey() == Enumeradores.TipoLinguagem.BancoDados.toString()).count() >  2)
 		{
 			setMensagem("Errrrrrrrrrrrrrrrou, você não pode bater somente com Banco de Dados.");
-			return false;
-		} else if (_tiposLinguagem.entrySet().stream().filter(f -> f.getKey() == Enumeradores.TipoLinguagem.EngSoftware.toString()).count() > 3)
+			_resultado =  false;
+		}
+		else if (_tiposLinguagem.entrySet().stream().filter(f -> f.getKey() == Enumeradores.TipoLinguagem.EngSoftware.toString()).count() > 3)
 
 		{
 			setMensagem("Errrrrrrrrrrrrrrrou, você não pode bater somente com Engenharia de software.");
-			return false;
+			_resultado =  false;
 		}
 		//endregion
-		return true;
+		return _resultado;
 	}
 
 	private void lancarErroBatidaInvalida(String pMsgErro) {
