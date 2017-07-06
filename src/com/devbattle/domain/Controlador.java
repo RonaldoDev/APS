@@ -146,64 +146,62 @@ public class Controlador {
 				setMensagem("Linguagem escolhida nao pertence as suas cartas.");
 				_resultado =  false;
 			}
+			else
+                for(Carta crt : pMaoJogador)
+                {
+                    _contador += crt.getLinguagens().stream().filter(f -> f.getNomeLinguagem().equals(str)).count();
+                }
 		};
 
-		for (String str : pListaSelecionados)
-		{
-			for(Carta crt : pMaoJogador)
-			{
-				_contador += crt.getLinguagens().stream().filter(f -> f.getNomeLinguagem().equals(str)).count();
-			}
-		}
 		if(_contador < 7)
 		{
 			setMensagem("cartas diferentes combo");
 			_resultado =  false;
 		}
-		if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "CSS").count() > 1 &&
-				pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "HTML").count() == 0)
+		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem().equals("CSS")).count() > 1 &&
+				pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem().equals("HTML")).count() == 0)
 		{
 			setMensagem("Você não pode bater com CSS sem uma carta HTML");
 			_resultado =  false;
 		}
-		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "HTML").count() > 0)
+		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem().equals("HTML")).count() > 1)
 		{
 			setMensagem("Você não pode bater com mais de uma carta HTML");
 			_resultado =  false;
 		}
-		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "XML").count() > 0)
+		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem().equals("XML")).count() > 1)
 		{
 			setMensagem("Você não pode bater com mais de uma carta XML");
 			_resultado =  false;
 		}
-		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "Javascript").count() > 0)
+		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem().equals("Javascript")).count() > 1)
 		{
 			setMensagem("Você não pode bater com mais de uma carta Javascript");
 			_resultado =  false;
 		}
-		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "Modelo Cascata").count() +
-				 	pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "Modelo Incremental").count()  > 1)
+		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem().equals("Modelo Cascata")).count() +
+				 	pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem().equals("Modelo Incremental")).count()  > 1)
 		{
 			setMensagem("Você não pode bater com dois Modelos de Projeto");
 			_resultado =  false;
 		}
 
-		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "UML").count() > 0)
+		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem().equals("UML")).count() > 0)
 		{
 			setMensagem("Você não pode bater com mais de uma carta UML");
 			_resultado =  false;
 		}
 
-		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "GraphDB").count()  +
-					pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "MongoDB").count() +
-						pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "Modelo Relacional").count() > 1)
+		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem().equals("GraphDB")).count()  +
+					pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem().equals("MongoDB")).count() +
+						pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem().equals("Modelo Relacional")).count() > 1)
 		{
 			setMensagem("Você só pode escolher um tipo de Banco de Dados");
 			_resultado =  false;
 		}
-		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "GraphDB").count()  +
-					pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "MongoDB").count() +
-						pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem() == "SGBD/SQL").count() > 1)
+		else if(pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem().equals("GraphDB")).count()  +
+					pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem().equals("MongoDB")).count() +
+						pMaoJogador.stream().filter(f -> f.getLinguagens().get(0).getNomeLinguagem().equals("SGBD/SQL")).count() > 1)
 		{
 			setMensagem("Você só pode escolher um tipo de Banco de Dados");
 			_resultado =  false;
